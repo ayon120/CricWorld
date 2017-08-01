@@ -68,10 +68,14 @@ public class DatabaseHandler {
     }
 
     //select all data from table
-    public ResultSet showAllDataQuery(String table_name) {
+    public ResultSet showAllDataQuery(String table_name,String col_name,String val,int cond_count) {
         try {
-
             String query = "SELECT * FROM " + table_name;
+            
+            for(int i=0; i<cond_count; i++){
+                query += " WHERE "+col_name+"= "+"'"+val+"'";
+            }
+            
             statement = connect.createStatement();
             result = statement.executeQuery(query);
 
@@ -83,7 +87,22 @@ public class DatabaseHandler {
         }
         return result;
     }
+    
+   public ResultSet showPlayerList(String team_name){
+       try {
+            String query = "SELECT p.p_name FROM player p INNER JOIN team t ON p.t_id = t.t_id WHERE t.t_name = "+"'"+team_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
 
+            System.out.println("Query is successful");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+    
     public void insertData(String table_name, String[] val) {
         try {
             String query = "INSERT INTO " + table_name + " VALUES(";
@@ -181,6 +200,5 @@ public class DatabaseHandler {
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
         }
-
     }
 }

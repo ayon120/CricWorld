@@ -7,8 +7,14 @@ package cricproject;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 /**
  *
@@ -26,6 +32,7 @@ public class teamInfo extends javax.swing.JFrame {
         ob1.setConnection();
         
         showTeamList();
+        
     }
     
     private void showTeamList() {
@@ -36,7 +43,7 @@ public class teamInfo extends javax.swing.JFrame {
             
             tableName = "team";
             
-            ResultSet result = ob1.showAllDataQuery(tableName);
+            ResultSet result = ob1.showAllDataQuery(tableName,null,null,0);
             
             while (result.next()) {
                 teamComboBox.addItem(result.getString(2));
@@ -64,6 +71,7 @@ public class teamInfo extends javax.swing.JFrame {
         cancelBttn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         playerList = new javax.swing.JList<>();
+        selectPlayerBttn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,13 +87,21 @@ public class teamInfo extends javax.swing.JFrame {
         });
 
         cancelBttn.setText("Cancel");
-
-        playerList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        cancelBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBttnActionPerformed(evt);
+            }
         });
+
+        playerList.setModel(new DefaultListModel ());
         jScrollPane1.setViewportView(playerList);
+
+        selectPlayerBttn.setText("Select Player");
+        selectPlayerBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectPlayerBttnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,8 +119,11 @@ public class teamInfo extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(62, 62, 62)
                             .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(258, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(selectPlayerBttn)))
+                .addContainerGap(592, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,18 +137,68 @@ public class teamInfo extends javax.swing.JFrame {
                     .addComponent(selectTeamBttn)
                     .addComponent(cancelBttn))
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(selectPlayerBttn)
+                .addGap(37, 37, 37))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectTeamBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTeamBttnActionPerformed
-       selectedteamName = teamComboBox.getSelectedItem().toString();
-       
-       
+        try {
+            selectedteamName = teamComboBox.getSelectedItem().toString();
+            
+            ResultSet result = ob1.showPlayerList(selectedteamName);
+            
+            DefaultListModel listModel =  (DefaultListModel) playerList.getModel();
+            
+            listModel.removeAllElements();
+            
+            while(result.next()){
+                listModel.addElement(result.getString(1));
+            }
+            
+            playerList.setModel(listModel);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_selectTeamBttnActionPerformed
+
+    private void cancelBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBttnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelBttnActionPerformed
+
+    private void selectPlayerBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectPlayerBttnActionPerformed
+        try{
+        String playerName = playerList.getSelectedValue();
+        String playerCatg = null;
+        String playerDOB = null;         
+        
+        String col_name = "p_name";
+        
+        tableName = "player";
+        
+        ResultSet result = ob1.showAllDataQuery(tableName, col_name, playerName, 1);
+        
+        while(result.next()){
+            playerCatg = result.getString(4);
+            playerDOB = result.getString(5);
+        }
+        
+        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName);
+        
+        ob2.setVisible(true);
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_selectPlayerBttnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,6 +240,7 @@ public class teamInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> playerList;
+    private javax.swing.JButton selectPlayerBttn;
     private javax.swing.JButton selectTeamBttn;
     private javax.swing.JComboBox<String> teamComboBox;
     // End of variables declaration//GEN-END:variables
