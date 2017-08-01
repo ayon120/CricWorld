@@ -123,6 +123,8 @@ public class teamInfo extends javax.swing.JFrame {
 
     private void selectTeamBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTeamBttnActionPerformed
        selectedteamName = teamComboBox.getSelectedItem().toString();
+       
+       
     }//GEN-LAST:event_selectTeamBttnActionPerformed
 
     /**
