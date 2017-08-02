@@ -14,7 +14,7 @@ public class CricProject {
        
    
     public static void main(String[] args) {
-       new teamInfo().setVisible(true);
+       new playerInfo().setVisible(true);
        
     }
     

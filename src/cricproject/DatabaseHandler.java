@@ -29,11 +29,11 @@ public class DatabaseHandler {
 
     private int sz_insertion;
 
-    public void setConnection() {
+    public Connection setConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost/" + "cricworld";
+            String url = "jdbc:mysql://localhost/" +"cricworld";
 
             String user = "root";
 
@@ -46,6 +46,8 @@ public class DatabaseHandler {
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
         }
+        
+        return connect;
 
     }
     

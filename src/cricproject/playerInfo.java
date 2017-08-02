@@ -5,6 +5,15 @@
  */
 package cricproject;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Rafee
@@ -14,8 +23,35 @@ public class playerInfo extends javax.swing.JFrame {
     /**
      * Creates new form playerInfo
      */
+    
+    private DatabaseHandler ob1 = new DatabaseHandler();
+    private String tableName = "player";
+    private String selectedteamName = null;
+    private Connection conn = null;
+    private Statement st = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
+    
+    
     public playerInfo() {
         initComponents();
+        conn = ob1.setConnection();
+        playerBasicInfo();
+    }
+    
+    private void playerBasicInfo()
+    {
+        try {
+            ps = conn.prepareStatement("SELECT * FROM player WHERE p_id = 1");
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                p_name.setText(rs.getString("p_name"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(playerInfo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,17 +63,94 @@ public class playerInfo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        p_team = new javax.swing.JLabel();
+        p_born = new javax.swing.JLabel();
+        p_age = new javax.swing.JLabel();
+        p_role = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        p_name = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        p_team.setText("Team:");
+
+        p_born.setText("Born:");
+
+        p_age.setText("Age:");
+
+        p_role.setText("Playing Role: ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 101, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jLabel5.setText("Batting and Fielding Stats");
+
+        p_name.setText("Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(p_age)
+                            .addComponent(p_born)
+                            .addComponent(p_team)
+                            .addComponent(p_role))
+                        .addGap(0, 258, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(p_name)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(p_name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(p_team)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(p_born, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(p_age)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(p_role)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -79,5 +192,13 @@ public class playerInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel p_age;
+    private javax.swing.JLabel p_born;
+    private javax.swing.JLabel p_name;
+    private javax.swing.JLabel p_role;
+    private javax.swing.JLabel p_team;
     // End of variables declaration//GEN-END:variables
 }
