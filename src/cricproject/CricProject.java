@@ -11,11 +11,8 @@ package cricproject;
  */
 public class CricProject {
        
-       
-   
     public static void main(String[] args) {
-       new Homepage().setVisible(true);
-       
+       new loginForm().setVisible(true);
     }
     
 }

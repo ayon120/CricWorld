@@ -41,7 +41,7 @@ public class DatabaseHandler {
 
             connect = DriverManager.getConnection(url, user, password);
 
-            JOptionPane.showMessageDialog(null, "Connection Successfull");
+            //JOptionPane.showMessageDialog(null, "Connection Successfull");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
