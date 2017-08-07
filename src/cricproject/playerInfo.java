@@ -29,13 +29,24 @@ public class playerInfo extends javax.swing.JFrame {
     private static ResultSet rs4 = null;
     private static ResultSet rs5 = null;
     private static ResultSet rs6 = null;
+    private static ResultSet rs7= null;
+    private static ResultSet rs8 = null;
+    private static ResultSet rs9 = null;
+    private static ResultSet rs10 = null;
+    private static ResultSet rs11 = null;
+    private static ResultSet rs12 = null;
+    private static ResultSet rs13 = null;
+    private static ResultSet rs14 = null;
+    
+    
     
     
     public playerInfo() {
         initComponents();
     }
     
-    public playerInfo(String plyrName,String plyrCatg,String plyrDOB,String plyrTeam,ResultSet rs1, ResultSet rs2, ResultSet rs3, ResultSet rs4, ResultSet rs5, ResultSet rs6){
+    public playerInfo(String plyrName,String plyrCatg,String plyrDOB,String plyrTeam,ResultSet rs1, ResultSet rs2, ResultSet rs3, ResultSet rs4, ResultSet rs5, 
+            ResultSet rs6,ResultSet rs7,ResultSet rs8,ResultSet rs9,ResultSet rs10,ResultSet rs11,ResultSet rs12,ResultSet rs13, ResultSet rs14){
         
         initComponents();
             
@@ -49,43 +60,135 @@ public class playerInfo extends javax.swing.JFrame {
         playerDOB.setText(this.plyrDOB);
         playerTeam.setText(this.plyrTeam);
             
-        try {              
-            while(rs1.next())
-            {   
-                if(!rs1.wasNull())
+        try {  
+            if(rs1 != null)
+            {
+                while(rs1.next())
+                {                  
                     pinningsbowled.setText(rs1.getString(1));
+                }  
             }
-            while(rs2.next())
+            if(rs2 != null)
             {
-                if(!rs2.wasNull())
-                    pinnbat.setText(rs2.getString(1));
-            }
-            while(rs3.next())
-            {
-                if(!rs3.wasNull())
-                    totwicket.setText(rs3.getString(1));
-            }
-            while(rs4.next())
-            {
-                if(!rs4.wasNull())
-                    highrstwicket.setText(rs4.getString(1));
-            }
-            int over = 0, run = 0;
-            while(rs5.next())
-            {
-                if(!rs5.wasNull())
+                while(rs2.next())
                 {
-                    over = ((Number) rs5.getObject(1)).intValue(); 
-                    run = ((Number) rs5.getObject(2)).intValue();
-                
-                    double eco = (double) run/over;
-                    economy.setText(Double.toString(eco));
+                    pinnbat.setText(rs2.getString(1));     
                 }
             }
-            while(rs6.next())
-            {   
-                if(!rs6.wasNull())
-                    pcatches.setText(rs6.getString(1));
+            
+            if(rs3 != null)
+            {
+                while(rs3.next())
+                {
+                    totwicket.setText(rs3.getString(1));     
+                }
+            }
+            if(rs4 != null)
+            {
+                while(rs4.next())
+                {
+                    highestwicket.setText(rs4.getString(1));     
+                }
+            }
+            int over = 0, run = 0;
+            
+            if(rs5 != null)
+            { 
+                while(rs5.next())
+                {
+                    if(!rs5.wasNull())
+                    {
+                        over = rs5.getInt(1); 
+                        run = rs5.getInt(2);
+                        double eco = 0.0;
+                        if(over != 0)
+                            eco = (double) run/over;
+
+                        economy.setText(Double.toString(eco)); 
+                    }
+                }
+            }
+            
+            if(rs6 != null)
+            {
+                while(rs6.next())
+                {
+                    pcatches.setText(rs6.getString(1));     
+                }
+            }
+            
+            if(rs7 != null)
+            {
+                while(rs7.next())
+                {
+                    ptotrun.setText(rs7.getString(1));     
+                }
+            }
+            
+            if(rs8 != null)
+            {
+                while(rs8.next())
+                {
+                    phighestrun.setText(rs8.getString(1));     
+                }
+            }
+            
+            if(rs9 != null)
+            {
+                while(rs9.next())
+                {
+                    p50.setText(rs9.getString(1));     
+                }
+            }
+            
+            if(rs10 != null)
+            {
+                while(rs10.next())
+                {
+                    p100.setText(rs10.getString(1));     
+                }
+            }
+            
+            int runs = 0, ball = 0;
+            if(rs11 != null)
+            { 
+                while(rs11.next())
+                {
+                    if(!rs11.wasNull())
+                    {
+                        runs = rs11.getInt(1); 
+                        ball = rs11.getInt(2);
+                        double sr = 0.0;
+                        if(ball != 0)
+                        sr = (double) runs*100/ball;
+
+                        pstrikerate.setText(Double.toString(sr)); 
+                    }
+                }
+            }
+            
+            if(rs12 != null)
+            {
+                while(rs12.next())
+                {
+                    highestwicketagainst.setText(rs12.getString(2));     
+                }
+            }
+            
+            if(rs13 != null)
+            {
+                while(rs13.next())
+                {
+                    highestrunagainst.setText(rs13.getString(2));     
+                }
+            }
+            
+            if(rs14 != null)
+            {
+                while(rs14.next())
+                {
+                    pmom.setText(rs14.getString(1));     
+                }
             }
             
         } catch (SQLException ex) {
@@ -129,9 +232,9 @@ public class playerInfo extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         totwicket = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        highrstwicket = new javax.swing.JLabel();
+        highestwicket = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        highestrunagainst = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -143,7 +246,7 @@ public class playerInfo extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         pcatches = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
+        pstrikerate = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
@@ -151,7 +254,7 @@ public class playerInfo extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
+        highestwicketagainst = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -230,12 +333,12 @@ public class playerInfo extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Higest-Wicket:");
 
-        highrstwicket.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        highrstwicket.setText("jLabel16");
+        highestwicket.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        highestwicket.setText("jLabel16");
 
         jLabel17.setText("Against");
 
-        jLabel18.setText("jLabel18");
+        highestrunagainst.setText("jLabel18");
 
         jLabel19.setText("ODI:");
 
@@ -264,8 +367,8 @@ public class playerInfo extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setText("Strike-Rate:");
 
-        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel32.setText("jLabel32");
+        pstrikerate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pstrikerate.setText("jLabel32");
 
         jLabel29.setText("ODI:");
 
@@ -281,7 +384,7 @@ public class playerInfo extends javax.swing.JFrame {
 
         jLabel37.setText("Against");
 
-        jLabel38.setText("jLabel38");
+        highestwicketagainst.setText("jLabel38");
 
         jLabel39.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel39.setText("Team:");
@@ -321,7 +424,7 @@ public class playerInfo extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel17)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel18))
+                                        .addComponent(highestrunagainst))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(22, 22, 22)
                                         .addComponent(jLabel19)
@@ -338,16 +441,16 @@ public class playerInfo extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(pinningsbowled)
                                 .addComponent(pinnbat))
-                            .addComponent(jLabel32)
+                            .addComponent(pstrikerate)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(highrstwicket)
+                                        .addComponent(highestwicket)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel37)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel38))
+                                        .addComponent(highestwicketagainst))
                                     .addComponent(economy)
                                     .addComponent(pcatches)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -430,9 +533,9 @@ public class playerInfo extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel14)
-                                    .addComponent(highrstwicket)
+                                    .addComponent(highestwicket)
                                     .addComponent(jLabel37)
-                                    .addComponent(jLabel38))
+                                    .addComponent(highestwicketagainst))
                                 .addGap(34, 34, 34)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel25)
@@ -460,7 +563,7 @@ public class playerInfo extends javax.swing.JFrame {
                                     .addComponent(jLabel9)
                                     .addComponent(phighestrun)
                                     .addComponent(jLabel17)
-                                    .addComponent(jLabel18))
+                                    .addComponent(highestrunagainst))
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel11)
@@ -472,7 +575,7 @@ public class playerInfo extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel31)
-                                    .addComponent(jLabel32))
+                                    .addComponent(pstrikerate))
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
@@ -540,14 +643,16 @@ public class playerInfo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new playerInfo(plyrName,plyrCatg,plyrDOB,plyrTeam,rs1,rs2,rs3,rs4,rs5,rs6).setVisible(true);
+                new playerInfo(plyrName,plyrCatg,plyrDOB,plyrTeam,rs1,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rs9,rs10,rs11,rs12,rs13,rs14).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel economy;
-    private javax.swing.JLabel highrstwicket;
+    private javax.swing.JLabel highestrunagainst;
+    private javax.swing.JLabel highestwicket;
+    private javax.swing.JLabel highestwicketagainst;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -556,7 +661,6 @@ public class playerInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -570,13 +674,11 @@ public class playerInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -595,6 +697,7 @@ public class playerInfo extends javax.swing.JFrame {
     private javax.swing.JLabel playerName;
     private javax.swing.JLabel playerTeam;
     private javax.swing.JLabel pmom;
+    private javax.swing.JLabel pstrikerate;
     private javax.swing.JLabel ptotrun;
     private javax.swing.JLabel totwicket;
     // End of variables declaration//GEN-END:variables

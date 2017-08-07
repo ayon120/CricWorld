@@ -420,8 +420,11 @@ public class teamInfo extends javax.swing.JFrame {
                     tmatchwon.setText(result2.getString(1));
                     w = ((Number) result2.getObject(1)).intValue();
                     
-                    double winrate = (w/m)*100.0;
-                    twinrate.setText(Double.toString(winrate));
+                    if(w != 0 || m != 0)
+                    {
+                        double winrate = (w/m)*100.0;
+                        twinrate.setText(Double.toString(winrate));
+                    }
                 }
             }
             
@@ -460,13 +463,17 @@ public class teamInfo extends javax.swing.JFrame {
         ResultSet result4 = ob1.playerHighestWicket(playerName);
         ResultSet result5 = ob1.playerEconomy(playerName);
         ResultSet result6 = ob1.playerCatches(playerName);
-            
+        ResultSet result7 = ob1.playerTotRuns(playerName);
+        ResultSet result8 = ob1.playerHighestScore(playerName);
+        ResultSet result9 = ob1.playerFifties(playerName);
+        ResultSet result10 = ob1.playerHundreds(playerName);
+        ResultSet result11 = ob1.playerStrikeRate(playerName);
+        ResultSet result12 = ob1.playerHighestWicketAgainst(playerName);
+        ResultSet result13 = ob1.playerHighestScoreAgainst(playerName);
+        ResultSet result14 = ob1.playerMOMs(playerName);
            
-        
-        
-        
-        
-        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName, result1, result2, result3, result4, result5, result6);
+  
+        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName, result1, result2, result3, result4, result5, result6, result7,result8,result9,result10,result11,result12,result13,result14);
         this.dispose();
         ob2.setVisible(true);
         

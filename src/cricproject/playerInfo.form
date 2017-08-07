@@ -79,7 +79,7 @@
                                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                          <Component id="highestrunagainst" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -101,16 +101,16 @@
                                   <Component id="pinningsbowled" min="-2" max="-2" attributes="0"/>
                                   <Component id="pinnbat" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
+                              <Component id="pstrikerate" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="highrstwicket" min="-2" max="-2" attributes="0"/>
+                                          <Component id="highestwicket" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                                          <Component id="highestwicketagainst" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="economy" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="pcatches" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -216,9 +216,9 @@
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="highrstwicket" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="highestwicket" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="highestwicketagainst" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -251,7 +251,7 @@
                                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="phighestrun" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="highestrunagainst" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -266,7 +266,7 @@
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pstrikerate" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -485,7 +485,7 @@
             <Property name="text" type="java.lang.String" value="Higest-Wicket:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="highrstwicket">
+        <Component class="javax.swing.JLabel" name="highestwicket">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -498,7 +498,7 @@
             <Property name="text" type="java.lang.String" value="Against"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel18">
+        <Component class="javax.swing.JLabel" name="highestrunagainst">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel18"/>
           </Properties>
@@ -573,7 +573,7 @@
             <Property name="text" type="java.lang.String" value="Strike-Rate:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel32">
+        <Component class="javax.swing.JLabel" name="pstrikerate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -616,7 +616,7 @@
             <Property name="text" type="java.lang.String" value="Against"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel38">
+        <Component class="javax.swing.JLabel" name="highestwicketagainst">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel38"/>
           </Properties>
