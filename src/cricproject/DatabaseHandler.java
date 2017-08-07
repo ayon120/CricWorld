@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -133,10 +135,43 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
+    
+    
+    public void updateData(String table_name,HashMap<String,String> colVal,String updateVal,String updateColumnName){
+         try{
+            String query = "UPDATE "+table_name+" SET ";
+            
+            Iterator<String> iter = colVal.keySet().iterator();
+            
+            while(iter.hasNext()){
+                String colmn = iter.next();
+                
+                query += colmn;
+                
+                query += "= "+colVal.get(colmn);//get column value
+                
+                if(iter.hasNext()){
+                    query += ", ";
+                }
+            }
+            
+            query += " WHERE "+updateColumnName + "= "+updateVal;
+            
+            System.out.println(query);
+            
+            pStatement = connect.prepareStatement(query);
 
+            pStatement.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Update successful");
+         }catch(Exception e){
+             JOptionPane.showMessageDialog(null, e);
+         }
+    }
+    
     public void deleteData(String table_name, String col_name, String val) {
         try {
-            System.out.println(table_name + " " + col_name + " " + val);
+            //System.out.println(table_name + " " + col_name + " " + val);
 
             String query = "DELETE FROM " + table_name + " WHERE " + col_name + "= ?";
 
