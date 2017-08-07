@@ -6,6 +6,7 @@
 package cricproject;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -49,6 +50,7 @@ public class teamInfo extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -385,6 +387,8 @@ public class teamInfo extends javax.swing.JFrame {
             
             ResultSet result = ob1.showPlayerList(selectedteamName);
             
+             
+            
             DefaultListModel listModel =  (DefaultListModel) playerList.getModel();
             
             listModel.removeAllElements();
@@ -394,6 +398,34 @@ public class teamInfo extends javax.swing.JFrame {
             }
             
             playerList.setModel(listModel);
+            
+            ResultSet result1 = ob1.teamMatchPlayed(selectedteamName);
+            
+            int m = 0, w = 0;
+            while(result1.next())
+            {   
+                if(!result1.wasNull())
+                {
+                    tmatchplayed.setText(result1.getString(2));
+                    m = ((Number) result1.getObject(2)).intValue();
+                }
+            }
+            
+            ResultSet result2 = ob1.teamWinCount(selectedteamName);
+            
+            while(result2.next())
+            {
+                if(!result2.wasNull())
+                {
+                    tmatchwon.setText(result2.getString(1));
+                    w = ((Number) result2.getObject(1)).intValue();
+                    
+                    double winrate = (w/m)*100.0;
+                    twinrate.setText(Double.toString(winrate));
+                }
+            }
+            
+            
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -422,7 +454,19 @@ public class teamInfo extends javax.swing.JFrame {
             playerDOB = result.getString(5);
         }
         
-        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName);
+        ResultSet result1 = ob1.playerInningsBowled(playerName);
+        ResultSet result2 = ob1.playerInningsBatted(playerName);
+        ResultSet result3 = ob1.playerWicketsTaken(playerName);
+        ResultSet result4 = ob1.playerHighestWicket(playerName);
+        ResultSet result5 = ob1.playerEconomy(playerName);
+        ResultSet result6 = ob1.playerCatches(playerName);
+            
+           
+        
+        
+        
+        
+        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName, result1, result2, result3, result4, result5, result6);
         this.dispose();
         ob2.setVisible(true);
         
