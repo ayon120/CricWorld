@@ -395,8 +395,8 @@ public class DatabaseHandler {
             String query = "SELECT p.p_name , b.runs , b.balls_faced , b.out_type , o_bowler.p_name as out_bowler , o_fielder.p_name as out_fielder  FROM batting_card b\n"
                     + "INNER JOIN player p ON p.p_id = b.p_id\n"
                     + "INNER JOIN team t ON t.t_id = p.t_id\n"
-                    + "INNER JOIN player o_bowler ON o_bowler.p_id = b.out_bowler\n"
-                    + "INNER JOIN player o_fielder ON o_fielder.p_id = b.out_fielder\n"
+                    + "LEFT JOIN player o_bowler ON o_bowler.p_id = b.out_bowler\n"
+                    + "LEFT JOIN player o_fielder ON o_fielder.p_id = b.out_fielder\n"
                     + "WHERE b.m_id = '"+m_id+"' AND t.t_name = '"+t_name+"'";
 
             statement = connect.createStatement();
