@@ -372,11 +372,10 @@ public class DatabaseHandler {
     //matchinfo gui
     public ResultSet showMatchInfo() {
         try {
-            String query = "SELECT m.m_id,team1.t_name as team1 , team2.t_name as team2, p.team1_total, p.team1_wickets_fallen, p.team2_total, p.team2_wickets_fallen, m.type ,m.date, m.time, v.v_name AS venue from matches m \n"
-                    + "inner join venue v on m.v_id = v.v_id\n"
-                    + "inner join plays p on m.m_id = p.m_id\n"
-                    + "inner join team team1 on team1.t_id = p.t1_id\n"
-                    + "inner join team team2 on team2.t_id = p.t2_id";
+            String query = "SELECT m.m_id , t.t_name , p.team_total, p.wickets_fallen , m.type , m.date, m.time,v.v_name  FROM matches m\n"
+                    + "INNER JOIN plays p ON p.m_id = m.m_id\n"
+                    + "INNER JOIN venue v ON v.v_id = m.v_id\n"
+                    + "INNER JOIN team t ON t.t_id = p.t_id";
 
             statement = connect.createStatement();
 
@@ -393,10 +392,10 @@ public class DatabaseHandler {
 
     public ResultSet showBattingCard(String val) {
         try {
-            String query = "SELECT p.p_name , b.runs , b.balls_faced , b.out_type, o_bowler.p_name as out_bowler, o_fielder.p_name as out_fielder  FROM batting_card b\n"
-                    + "INNER JOIN player p on p.p_id = b.p_id\n"
-                    + "INNER JOIN player o_bowler on o_bowler.p_id = b.out_bowler \n"
-                    + "INNER JOIN player o_fielder on o_fielder.p_id = b.out_fielder\n"
+            String query = "SELECT p.p_name , b.runs , b.balls_faced , b.out_type , o_bowler.p_name , o_fielder.p_name  FROM batting_card b\n"
+                    + "INNER JOIN player p ON p.p_id = b.p_id\n"
+                    + "INNER JOIN player o_bowler ON o_bowler.p_id = b.out_bowler\n"
+                    + "INNER JOIN player o_fielder ON o_fielder.p_id = b.out_fielder\n"
                     + "WHERE b.m_id = '" + val + "'";
 
             statement = connect.createStatement();
