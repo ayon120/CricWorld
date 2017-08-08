@@ -417,7 +417,7 @@ public class DatabaseHandler {
             String query = "SELECT p.p_name , b.overs, b.maiden,b.wickets,b.runs_given FROM bowling_card b\n"
                     + "INNER JOIN player p on p.p_id = b.p_id\n"
                     + "INNER JOIN team t on t.t_id = p.t_id\n"
-                    + "WHERE b.m_id = '"+m_id+"' AND t.t_name = '"+t_name+"'";
+                    + "WHERE b.m_id = '"+m_id+"' AND t.t_name != '"+t_name+"'";
 
             statement = connect.createStatement();
 
