@@ -37,7 +37,7 @@ public class playerInfo extends javax.swing.JFrame {
     private static ResultSet rs12 = null;
     private static ResultSet rs13 = null;
     private static ResultSet rs14 = null;
-    
+    private static ResultSet rs15 = null;
     
     
     
@@ -46,7 +46,8 @@ public class playerInfo extends javax.swing.JFrame {
     }
     
     public playerInfo(String plyrName,String plyrCatg,String plyrDOB,String plyrTeam,ResultSet rs1, ResultSet rs2, ResultSet rs3, ResultSet rs4, ResultSet rs5, 
-            ResultSet rs6,ResultSet rs7,ResultSet rs8,ResultSet rs9,ResultSet rs10,ResultSet rs11,ResultSet rs12,ResultSet rs13, ResultSet rs14){
+            ResultSet rs6,ResultSet rs7,ResultSet rs8,ResultSet rs9,ResultSet rs10,ResultSet rs11,ResultSet rs12,ResultSet rs13, ResultSet rs14,
+            ResultSet rs15){
         
         initComponents();
             
@@ -191,6 +192,13 @@ public class playerInfo extends javax.swing.JFrame {
                 }
             }
             
+            if(rs15 != null)
+            {
+                while(rs15.next())
+                {
+                    pmatchplayed.setText(rs15.getString(1));     
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(playerInfo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -214,7 +222,7 @@ public class playerInfo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        pmatchplayed = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         pinnbat = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -279,8 +287,8 @@ public class playerInfo extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Match-Played:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("jLabel4");
+        pmatchplayed.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pmatchplayed.setText("jLabel4");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Innings-Batted:");
@@ -483,7 +491,7 @@ public class playerInfo extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(128, 128, 128)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addComponent(pmatchplayed)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(playerDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                                 .addComponent(playerCatg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -531,7 +539,7 @@ public class playerInfo extends javax.swing.JFrame {
                                 .addGap(39, 39, 39)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
+                                    .addComponent(pmatchplayed)
                                     .addComponent(jLabel14)
                                     .addComponent(highestwicket)
                                     .addComponent(jLabel37)
@@ -643,7 +651,7 @@ public class playerInfo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new playerInfo(plyrName,plyrCatg,plyrDOB,plyrTeam,rs1,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rs9,rs10,rs11,rs12,rs13,rs14).setVisible(true);
+                new playerInfo(plyrName,plyrCatg,plyrDOB,plyrTeam,rs1,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rs9,rs10,rs11,rs12,rs13,rs14,rs15).setVisible(true);
             }
         });
     }
@@ -680,7 +688,6 @@ public class playerInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -696,6 +703,7 @@ public class playerInfo extends javax.swing.JFrame {
     private javax.swing.JLabel playerDOB;
     private javax.swing.JLabel playerName;
     private javax.swing.JLabel playerTeam;
+    private javax.swing.JLabel pmatchplayed;
     private javax.swing.JLabel pmom;
     private javax.swing.JLabel pstrikerate;
     private javax.swing.JLabel ptotrun;

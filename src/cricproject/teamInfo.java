@@ -469,9 +469,9 @@ public class teamInfo extends javax.swing.JFrame {
         ResultSet result12 = ob1.playerHighestWicketAgainst(playerName);
         ResultSet result13 = ob1.playerHighestScoreAgainst(playerName);
         ResultSet result14 = ob1.playerMOMs(playerName);
-           
+        ResultSet result15 = ob1.playermatchplayed(playerName);
   
-        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName, result1, result2, result3, result4, result5, result6, result7,result8,result9,result10,result11,result12,result13,result14);
+        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName, result1, result2, result3, result4, result5, result6, result7,result8,result9,result10,result11,result12,result13,result14,result15);
         this.dispose();
         ob2.setVisible(true);
         

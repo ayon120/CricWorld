@@ -353,7 +353,21 @@ public class DatabaseHandler {
         }
         return result;
     }
+    
+    public ResultSet playermatchplayed(String p_name) {
+        try {
+            String query = "SELECT count(*) FROM team_select AS t INNER JOIN player AS p ON p.p_id = t.p_id INNER JOIN matches AS m ON m.m_id = t.m_id WHERE p.p_name = " + "'" + p_name + "' AND m.type = 'ODI'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
 
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     public void insertData(String table_name, String[] val) {
         try {
             String query = "INSERT INTO " + table_name + " VALUES(";
