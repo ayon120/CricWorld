@@ -67,12 +67,12 @@ public class tourinfo extends javax.swing.JFrame {
         tsponser = new javax.swing.JLabel();
         twin = new javax.swing.JLabel();
         tman = new javax.swing.JLabel();
-        thirun1 = new javax.swing.JLabel();
-        thiwicket1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        maxrungetter = new javax.swing.JLabel();
+        maxwickettaker = new javax.swing.JLabel();
+        maxrun = new javax.swing.JLabel();
         thirun2 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        maxwicket = new javax.swing.JLabel();
         thighwicket2 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -130,14 +130,14 @@ public class tourinfo extends javax.swing.JFrame {
         tman.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tman.setText("jLabel13");
 
-        thirun1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        thirun1.setText("jLabel14");
+        maxrungetter.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        maxrungetter.setText("jLabel14");
 
-        thiwicket1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        thiwicket1.setText("jLabel15");
+        maxwickettaker.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        maxwickettaker.setText("jLabel15");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("(Individual)");
+        maxrun.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        maxrun.setText("(Individual)");
 
         thirun2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         thirun2.setText("jLabel16");
@@ -145,8 +145,8 @@ public class tourinfo extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("(Total)");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("(Individual)");
+        maxwicket.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        maxwicket.setText("(Individual)");
 
         thighwicket2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         thighwicket2.setText("jLabel19");
@@ -194,8 +194,8 @@ public class tourinfo extends javax.swing.JFrame {
                                     .addComponent(jLabel21))
                                 .addGap(69, 69, 69)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(thiwicket1)
-                                    .addComponent(thirun1)
+                                    .addComponent(maxwickettaker)
+                                    .addComponent(maxrungetter)
                                     .addComponent(tman)
                                     .addComponent(twin)
                                     .addComponent(tsponser)
@@ -204,8 +204,8 @@ public class tourinfo extends javax.swing.JFrame {
                                     .addComponent(tteams))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel18))
+                                    .addComponent(maxrun)
+                                    .addComponent(maxwicket))
                                 .addGap(40, 40, 40)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -250,15 +250,15 @@ public class tourinfo extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(thirun1)
-                            .addComponent(jLabel1)
+                            .addComponent(maxrungetter)
+                            .addComponent(maxrun)
                             .addComponent(thirun2)
                             .addComponent(jLabel17))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(thiwicket1)
-                            .addComponent(jLabel18)
+                            .addComponent(maxwickettaker)
+                            .addComponent(maxwicket)
                             .addComponent(thighwicket2)
                             .addComponent(jLabel20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -302,6 +302,7 @@ public class tourinfo extends javax.swing.JFrame {
         String teams = " ";
         String col_name = "tour_name";
         
+        
         tableName = "tournament";
         
         ResultSet result = ob1.showAllDataQuery(tableName, col_name, tName, 1);
@@ -344,8 +345,28 @@ public class tourinfo extends javax.swing.JFrame {
             teams = teams + result3.getString(1) + "  ";
         }
            
-         tteams.setText(teams);
+        tteams.setText(teams);
          
+        ResultSet result4 = ob1.showList("SELECT p.p_name, sum(b.runs) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id INNER JOIN matches AS m ON m.m_id = b.m_id INNER JOIN tournament AS t ON t.tour_id = m.tour_id WHERE t.tour_id = '1' group by p.p_name order by sum(b.runs) DESC LIMIT 1");
+        
+        while(result4.next()){
+            highestrun2 = result4.getString(2);
+            highestrun1 = result4.getString(1);
+        }
+                   
+        maxrun.setText(highestrun2);
+        maxrungetter.setText(highestrun1);
+        
+        ResultSet result5 = ob1.showList("SELECT p.p_name, sum(b.wickets) FROM bowling_card AS b INNER JOIN player AS p ON p.p_id = b.p_id INNER JOIN matches AS m ON m.m_id = b.m_id INNER JOIN tournament AS t ON t.tour_id = m.tour_id WHERE t.tour_id = '1' group by p.p_name order by sum(b.wickets) DESC LIMIT 1");
+
+        while(result5.next()){
+            wickettaker2 = result5.getString(2);
+            wickettaker1 = result5.getString(1);
+        }
+                   
+        maxwicket.setText(wickettaker2);
+        maxwickettaker.setText(wickettaker1);
+        
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
@@ -390,9 +411,7 @@ public class tourinfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -404,10 +423,12 @@ public class tourinfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel maxrun;
+    private javax.swing.JLabel maxrungetter;
+    private javax.swing.JLabel maxwicket;
+    private javax.swing.JLabel maxwickettaker;
     private javax.swing.JLabel thighwicket2;
-    private javax.swing.JLabel thirun1;
     private javax.swing.JLabel thirun2;
-    private javax.swing.JLabel thiwicket1;
     private javax.swing.JLabel thost;
     private javax.swing.JList<String> tlist;
     private javax.swing.JLabel tman;

@@ -448,6 +448,25 @@ public class DatabaseHandler {
 
         return result;
     }
+    
+    public ResultSet TourHighestRunGetter(String m_id,String t_name) {
+        try {
+            String query = "SELECT p.p_name, sum(b.runs) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id INNER JOIN matches AS m ON m.m_id = b.m_id INNER JOIN tournament AS t ON t.tour_id = m.tour_id WHERE t.tour_id = '1' group by p.p_name order by sum(b.runs) DESC LIMIT 1;";
+
+            statement = connect.createStatement();
+
+            result = statement.executeQuery(query);
+
+            System.out.println("Query successful");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+    
 
     public void updateData(String table_name, HashMap<String, String> colVal, String updateVal, String updateColumnName) {
         try {
