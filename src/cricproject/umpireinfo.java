@@ -5,17 +5,46 @@
  */
 package cricproject;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ayon
  */
 public class umpireinfo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form umpireinfo
-     */
+    private DatabaseHandler ob1 = new DatabaseHandler();
+    private String tableName = null;
+    private String selectedteamName = null;
+    
     public umpireinfo() {
         initComponents();
+        ob1.setConnection();
+        umpirelist();
+    }
+    
+    private void umpirelist(){
+        try {
+            
+            ResultSet result = ob1.showList("SELECT * FROM umpire");
+            
+            DefaultListModel listModel =  (DefaultListModel) ulist.getModel();
+            
+            listModel.removeAllElements();
+            
+            while(result.next()){
+                listModel.addElement(result.getString(2));
+            }
+            
+            ulist.setModel(listModel);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -29,33 +58,28 @@ public class umpireinfo extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        ulist = new javax.swing.JList<>();
         selectumpirebtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         uname = new javax.swing.JLabel();
         unation = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        udob = new javax.swing.JLabel();
         umatches = new javax.swing.JLabel();
-        uteam1 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        uteam2 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        udate = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        ulist.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(ulist);
 
         selectumpirebtn.setText("Generate");
+        selectumpirebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectumpirebtnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nationality:");
@@ -66,35 +90,17 @@ public class umpireinfo extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Total Matches:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Last Match info:");
-
         uname.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         uname.setText("Show Name");
 
         unation.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         unation.setText("jLabel7");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jLabel8.setText("jLabel8");
+        udob.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        udob.setText("jLabel8");
 
         umatches.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         umatches.setText("jLabel9");
-
-        uteam1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        uteam1.setText("team1");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setText("VS");
-
-        uteam2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        uteam2.setText("team2");
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel13.setText("date:");
-
-        udate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        udate.setText("12-12-12");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cricproject/icons8-Home-64.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,41 +117,28 @@ public class umpireinfo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(234, 234, 234)
+                                .addComponent(uname))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(144, 144, 144)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(uname)
+                                .addGap(80, 80, 80)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(unation, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(udob, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(70, 70, 70)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(unation, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(umatches, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(1, 1, 1))))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(44, 44, 44)
-                                .addComponent(uteam1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(uteam2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(udate))))
+                                        .addComponent(umatches, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(1, 1, 1))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(selectumpirebtn)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -158,26 +151,18 @@ public class umpireinfo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(uname, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104)
+                        .addGap(132, 132, 132)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(unation))
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel8))
+                            .addComponent(udob))
                         .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(umatches))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(uteam1)
-                            .addComponent(jLabel11)
-                            .addComponent(uteam2)
-                            .addComponent(jLabel13)
-                            .addComponent(udate)))
+                            .addComponent(umatches)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(selectumpirebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,6 +187,42 @@ public class umpireinfo extends javax.swing.JFrame {
         this.dispose();
         new Homepage().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void selectumpirebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectumpirebtnActionPerformed
+        try{
+        String uName = ulist.getSelectedValue();
+        String uNation = null;
+        String uDOB = null;         
+        String uid = null;
+        String matches  = null;
+        String col_name = "u_name";
+        
+        tableName = "umpire";
+        
+        ResultSet result = ob1.showAllDataQuery(tableName, col_name, uName, 1);
+        
+        while(result.next()){
+            uNation = result.getString(4);
+            uDOB = result.getString(3);
+            uid = result.getString(1);
+        }
+        ResultSet result1 = ob1.showList("SELECT count(*) from supervises where u_id = '" + uid + "';");
+        
+        uname.setText(uName);
+        unation.setText(uNation);
+        udob.setText(uDOB);
+        
+        while(result1.next()){
+           matches  = result1.getString(1);
+        }
+        
+        umatches.setText(matches);
+         
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_selectumpirebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,22 +261,16 @@ public class umpireinfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton selectumpirebtn;
-    private javax.swing.JLabel udate;
+    private javax.swing.JLabel udob;
+    private javax.swing.JList<String> ulist;
     private javax.swing.JLabel umatches;
     private javax.swing.JLabel uname;
     private javax.swing.JLabel unation;
-    private javax.swing.JLabel uteam1;
-    private javax.swing.JLabel uteam2;
     // End of variables declaration//GEN-END:variables
 }

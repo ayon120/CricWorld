@@ -387,8 +387,6 @@ public class teamInfo extends javax.swing.JFrame {
             
             ResultSet result = ob1.showPlayerList(selectedteamName);
             
-             
-            
             DefaultListModel listModel =  (DefaultListModel) playerList.getModel();
             
             listModel.removeAllElements();

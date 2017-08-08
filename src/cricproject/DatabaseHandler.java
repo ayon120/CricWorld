@@ -53,6 +53,22 @@ public class DatabaseHandler {
         }
 
     }
+    
+    public ResultSet showList(String q){
+       try {
+            String query = q;
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+
+            System.out.println("Query is successful");
+
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, e);
+             e.printStackTrace();
+        }
+       return result;
+    }
+
 
     //show tables of database
     public ArrayList<String> showtable() {

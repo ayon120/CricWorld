@@ -43,7 +43,7 @@ public class Homepage extends javax.swing.JFrame {
         coachbtn = new javax.swing.JButton();
         venuebtn = new javax.swing.JButton();
         umpirebtn = new javax.swing.JButton();
-        statsbtn = new javax.swing.JButton();
+        tourBttn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -131,11 +131,11 @@ public class Homepage extends javax.swing.JFrame {
             }
         });
 
-        statsbtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        statsbtn.setText("Stats");
-        statsbtn.addActionListener(new java.awt.event.ActionListener() {
+        tourBttn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tourBttn.setText("Tour Info");
+        tourBttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statsbtnActionPerformed(evt);
+                tourBttnActionPerformed(evt);
             }
         });
 
@@ -163,7 +163,7 @@ public class Homepage extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(umpirebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(statsbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tourBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -190,7 +190,7 @@ public class Homepage extends javax.swing.JFrame {
                     .addComponent(coachbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(venuebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(umpirebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(statsbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(tourBttn, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,10 +239,10 @@ public class Homepage extends javax.swing.JFrame {
         new venueinfo().setVisible(true);
     }//GEN-LAST:event_venuebtnActionPerformed
 
-    private void statsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsbtnActionPerformed
+    private void tourBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tourBttnActionPerformed
         this.dispose();
-        new Statsinfo().setVisible(true);
-    }//GEN-LAST:event_statsbtnActionPerformed
+        new tourinfo().setVisible(true);
+    }//GEN-LAST:event_tourBttnActionPerformed
 
     private void matchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchbtnActionPerformed
         this.dispose();
@@ -297,9 +297,9 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton matchbtn;
-    private javax.swing.JButton statsbtn;
     private javax.swing.JButton teambtn;
     private javax.swing.JTable teamranktable;
+    private javax.swing.JButton tourBttn;
     private javax.swing.JButton umpirebtn;
     private javax.swing.JButton venuebtn;
     // End of variables declaration//GEN-END:variables
