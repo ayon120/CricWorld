@@ -107,27 +107,20 @@ public class loginForm extends javax.swing.JFrame {
     private void okBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBttnActionPerformed
         String inputPass = new String(passField.getPassword());
 
-        if (inputPass.contains(" ")) 
-        {
-            JOptionPane.showMessageDialog(null, "Password contains spaces");
-        } 
-        else 
-        {
-            if (userChangeBox.getSelectedItem().toString() == "Admin") 
-            {
+        if (userChangeBox.getSelectedItem().toString() == "Admin") {
 
-                if (userNameField.getText().equals(userAdmin) && inputPass.equals(pass)) {
-                    JOptionPane.showMessageDialog(null, "Connected Successfully");
-                    new adminForm().setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Invalid user or password");
-                }
-
+            if (userNameField.getText().equals(userAdmin) && inputPass.equals(pass)) {
+                JOptionPane.showMessageDialog(null, "Connected Successfully");
+                new adminForm().setVisible(true);
+                this.dispose();
             } else {
-
+                JOptionPane.showMessageDialog(null, "Invalid user or password");
             }
+
+        } else {
+             new Homepage().setVisible(true);
         }
+
     }//GEN-LAST:event_okBttnActionPerformed
 
     private void cancelBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBttnActionPerformed

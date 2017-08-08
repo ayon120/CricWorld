@@ -14,8 +14,12 @@ public class Homepage extends javax.swing.JFrame {
     /**
      * Creates new form Homepage
      */
+    private DatabaseHandler ob1 = new DatabaseHandler();
+    
     public Homepage() {
         initComponents();
+        
+        ob1.setConnection();
     }
 
     /**
@@ -243,9 +247,7 @@ public class Homepage extends javax.swing.JFrame {
     private void matchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchbtnActionPerformed
         this.dispose();
         
-        
-        
-        new matchinfo().setVisible(true);
+        new matchinfo(ob1).setVisible(true);
     }//GEN-LAST:event_matchbtnActionPerformed
 
     /**
