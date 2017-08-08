@@ -17,7 +17,7 @@ public class matchinfo extends javax.swing.JFrame {
 
     private static DatabaseHandler ob1 = new DatabaseHandler();
     private ResultSet result;
-    private String val;
+    private String m_id,t_name;
     private int selectedData;
 
     private TableModel model = null;
@@ -212,7 +212,8 @@ public class matchinfo extends javax.swing.JFrame {
         ob1.setConnection();
 
         if (model != null) {
-            val = model.getValueAt(selectedData, 0).toString();
+            m_id = model.getValueAt(selectedData, 0).toString();
+            t_name = model.getValueAt(selectedData, 1).toString();
             
             showBatting_Table();
 
@@ -228,7 +229,7 @@ public class matchinfo extends javax.swing.JFrame {
 
     private void showBatting_Table() {
 
-        result = ob1.showBattingCard(val);
+        result = ob1.showBattingCard(m_id,t_name);
 
         batting_Table.setModel(DbUtils.resultSetToTableModel(result));
 
@@ -236,7 +237,7 @@ public class matchinfo extends javax.swing.JFrame {
 
     private void showBowling_Table() {
 
-        result = ob1.showBowlingCard(val);
+        result = ob1.showBowlingCard(m_id,t_name);
 
         bowling_Table.setModel(DbUtils.resultSetToTableModel(result));
 

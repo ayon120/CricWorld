@@ -390,13 +390,14 @@ public class DatabaseHandler {
         return result;
     }
 
-    public ResultSet showBattingCard(String val) {
+    public ResultSet showBattingCard(String m_id,String t_name) {
         try {
-            String query = "SELECT p.p_name , b.runs , b.balls_faced , b.out_type , o_bowler.p_name , o_fielder.p_name  FROM batting_card b\n"
+            String query = "SELECT p.p_name , b.runs , b.balls_faced , b.out_type , o_bowler.p_name as out_bowler , o_fielder.p_name as out_fielder  FROM batting_card b\n"
                     + "INNER JOIN player p ON p.p_id = b.p_id\n"
+                    + "INNER JOIN team t ON t.t_id = p.t_id\n"
                     + "INNER JOIN player o_bowler ON o_bowler.p_id = b.out_bowler\n"
                     + "INNER JOIN player o_fielder ON o_fielder.p_id = b.out_fielder\n"
-                    + "WHERE b.m_id = '" + val + "'";
+                    + "WHERE b.m_id = '"+m_id+"' AND t.t_name = '"+t_name+"'";
 
             statement = connect.createStatement();
 
@@ -411,11 +412,12 @@ public class DatabaseHandler {
         return result;
     }
 
-    public ResultSet showBowlingCard(String val) {
+    public ResultSet showBowlingCard(String m_id,String t_name) {
         try {
             String query = "SELECT p.p_name , b.overs, b.maiden,b.wickets,b.runs_given FROM bowling_card b\n"
                     + "INNER JOIN player p on p.p_id = b.p_id\n"
-                    + "WHERE b.m_id = '"+val+"'";
+                    + "INNER JOIN team t on t.t_id = p.t_id\n"
+                    + "WHERE b.m_id = '"+m_id+"' AND t.t_name = '"+t_name+"'";
 
             statement = connect.createStatement();
 
