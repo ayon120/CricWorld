@@ -242,6 +242,9 @@ public class Homepage extends javax.swing.JFrame {
 
     private void matchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchbtnActionPerformed
         this.dispose();
+        
+        
+        
         new matchinfo().setVisible(true);
     }//GEN-LAST:event_matchbtnActionPerformed
 
