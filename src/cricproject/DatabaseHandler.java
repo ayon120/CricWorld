@@ -9,10 +9,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -104,7 +107,253 @@ public class DatabaseHandler {
         }
         return result;
    }
+   
+   public ResultSet teamMatchPlayed(String team_name)
+   {
+        try {
+            String query = "SELECT t.t_name, count(*) AS match_played FROM plays AS p INNER JOIN team AS t ON t.t_id = p.t_id "
+                    + "WHERE t.t_name = "+"'"+team_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet teamWinCount(String team_name)
+   {
+       try {
+            String query = "SELECT count(*) FROM team AS t INNER JOIN plays AS p ON p.t_id = t.t_id AND t_name = "+"'"+team_name+"'"
+                    + "INNER JOIN matches AS m ON m.m_id = p.m_id WHERE t.t_id = winner";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerInningsBowled(String p_name)
+   {
+       try {
+            String query = "SELECT count(*) FROM player AS p INNER JOIN bowling_card AS b ON b.p_id = p.p_id WHERE p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerInningsBatted(String p_name)
+   {
+       try {
+            String query = "SELECT count(*) FROM player AS p INNER JOIN batting_card AS b ON b.p_id = p.p_id WHERE p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerWicketsTaken(String p_name)
+   {
+       try {
+            String query = "SELECT sum(b.wickets) FROM bowling_card AS b INNER JOIN player AS p ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerHighestWicket(String p_name)
+   {
+       try {
+            String query = "SELECT max(b.wickets) FROM bowling_card AS b INNER JOIN player AS p ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerEconomy(String p_name)
+   {
+       try {
+            String query = "SELECT sum(overs), sum(runs_given) FROM player AS p INNER JOIN bowling_card AS b ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerCatches(String p_name)
+   {
+       try {
+            String query = "SELECT count(*) FROM player AS p INNER JOIN batting_card AS b ON b.out_fielder = p.p_id AND out_type = 'Catch Out' WHERE p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerTotRuns(String p_name)
+   {
+       try {
+            String query = "SELECT sum(b.runs) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerHighestScore(String p_name)
+   {
+       try {
+            String query = "SELECT max(b.runs) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerFifties(String p_name)
+   {
+       try {
+            String query = "SELECT count(*) FROM player AS p INNER JOIN batting_card AS b ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"' AND b.runs between 50 AND 99";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerHundreds(String p_name)
+   {
+       try {
+            String query = "SELECT count(*) FROM player AS p INNER JOIN batting_card AS b ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"' AND b.runs >= 100";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerStrikeRate(String p_name)
+   {
+       try {
+            String query = "SELECT sum(runs), sum(balls_faced) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id WHERE p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerHighestWicketAgainst(String p_name)
+   {
+       try {
+            String query = "SELECT pl.p_name, t.t_name FROM plays AS p INNER JOIN bowling_card AS b ON p.m_id = b.m_id"
+                    + " INNER JOIN player AS pl ON pl.p_id = b.p_id AND pl.t_id <> p.t_id INNER JOIN team AS t ON t.t_id = p.t_id WHERE pl.p_name = "+"'"+p_name+"' AND b.wickets = "
+                    + "(SELECT max(b.wickets) FROM bowling_card AS b INNER JOIN player AS p ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"')";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
     
+   public ResultSet playerHighestScoreAgainst(String p_name)
+   {
+       try {
+            String query = "SELECT pl.p_name, t.t_name FROM plays AS p INNER JOIN batting_card AS b ON p.m_id = b.m_id"
+                    + " INNER JOIN player AS pl ON pl.p_id = b.p_id AND pl.t_id <> p.t_id INNER JOIN team AS t ON t.t_id = p.t_id WHERE pl.p_name = "+"'"+p_name+"' AND b.runs = "
+                    + "(SELECT max(b.runs) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id WHERE p.p_name = "+"'"+p_name+"')";            
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
+   public ResultSet playerMOMs(String p_name)
+   {
+       try {
+            String query = "SELECT count(*) FROM matches AS m INNER JOIN player AS p ON p.p_id = m.mom WHERE p.p_name = "+"'"+p_name+"'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+            
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+   }
+   
     public void insertData(String table_name, String[] val) {
         try {
             String query = "INSERT INTO " + table_name + " VALUES(";
