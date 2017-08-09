@@ -81,6 +81,8 @@ public class matchinfo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 650));
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cricproject/icons8-Home-64.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,13 +146,10 @@ public class matchinfo extends javax.swing.JFrame {
         jLabel2.setText("Bowling Card");
 
         run.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        run.setText("jLabel3");
 
         team.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        team.setText("jLabel4");
 
         wicket.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        wicket.setText("jLabel5");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Umpires:");
@@ -159,16 +158,13 @@ public class matchinfo extends javax.swing.JFrame {
         jLabel7.setText("Man of the Match:");
 
         man.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        man.setText("jLabel8");
 
         umpire.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        umpire.setText("jLabel9");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Winner:");
 
         winner.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        winner.setText("jLabel11");
 
         jLabel3.setText(")");
 
@@ -283,7 +279,8 @@ public class matchinfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new Homepage().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void matchStatsBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchStatsBttnActionPerformed

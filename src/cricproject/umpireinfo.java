@@ -71,6 +71,8 @@ public class umpireinfo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
         ulist.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(ulist);
 
@@ -94,13 +96,10 @@ public class umpireinfo extends javax.swing.JFrame {
         uname.setText("Show Name");
 
         unation.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        unation.setText("jLabel7");
 
         udob.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        udob.setText("jLabel8");
 
         umatches.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        umatches.setText("jLabel9");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cricproject/icons8-Home-64.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {

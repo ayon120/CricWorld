@@ -138,11 +138,41 @@ public class DatabaseHandler {
         }
         return result;
     }
+    
+    public ResultSet teamODIPlayed(String team_name) {
+        try {
+            String query = "SELECT t.t_name, count(*) AS match_played FROM plays AS p INNER JOIN team AS t ON t.t_id = p.t_id "
+                    + "AND t.t_name = " + "'" + team_name + "' INNER JOIN matches AS m ON m.m_id = p.m_id WHERE m.type = 'ODI'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     public ResultSet teamWinCount(String team_name) {
         try {
             String query = "SELECT count(*) FROM team AS t INNER JOIN plays AS p ON p.t_id = t.t_id AND t_name = " + "'" + team_name + "'"
                     + "INNER JOIN matches AS m ON m.m_id = p.m_id WHERE t.t_id = winner";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public ResultSet teamODIWinCount(String team_name) {
+        try {
+            String query = "SELECT count(*) FROM team AS t INNER JOIN plays AS p ON p.t_id = t.t_id AND t_name = " + "'" + team_name + "'"
+                    + "INNER JOIN matches AS m ON m.m_id = p.m_id WHERE t.t_id = winner AND m.type ='ODI'";
             statement = connect.createStatement();
             result = statement.executeQuery(query);
 
@@ -185,6 +215,34 @@ public class DatabaseHandler {
     public ResultSet playerWicketsTaken(String p_name) {
         try {
             String query = "SELECT sum(b.wickets) FROM bowling_card AS b INNER JOIN player AS p ON p.p_id = b.p_id WHERE p.p_name = " + "'" + p_name + "'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public ResultSet playerODIWicketsTaken(String p_name) {
+        try {
+            String query = "SELECT sum(b.wickets) FROM bowling_card AS b INNER JOIN player AS p ON p.p_id = b.p_id AND p.p_name = " + "'" + p_name + "' INNER JOIN matches AS m ON m.m_id = b.m_id WHERE m.type = 'ODI'";
+            statement = connect.createStatement();
+            result = statement.executeQuery(query);
+
+            System.out.println("Query is successful");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public ResultSet playerODIRuns(String p_name) {
+        try {
+            String query = "SELECT sum(b.runs) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id AND p.p_name = " + "'" + p_name + "' INNER JOIN matches AS m ON m.m_id = b.m_id WHERE m.type = 'ODI'";
             statement = connect.createStatement();
             result = statement.executeQuery(query);
 

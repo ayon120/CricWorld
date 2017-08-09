@@ -77,6 +77,8 @@ public class coachinfo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
         clist.setModel(new DefaultListModel()
         );
         jScrollPane1.setViewportView(clist);
@@ -109,13 +111,10 @@ public class coachinfo extends javax.swing.JFrame {
         ccatagory.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
 
         cnation.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        cnation.setText("jLabel8");
 
         cdob.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        cdob.setText("jLabel9");
 
         cjoindate.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        cjoindate.setText("jLabel10");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cricproject/icons8-Home-64.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -128,10 +127,8 @@ public class coachinfo extends javax.swing.JFrame {
         jLabel4.setText("Current-team:");
 
         cteam.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        cteam.setText("jLabel8");
 
         cpteams.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cpteams.setText("jLabel8");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

@@ -70,16 +70,14 @@ public class tourinfo extends javax.swing.JFrame {
         maxrungetter = new javax.swing.JLabel();
         maxwickettaker = new javax.swing.JLabel();
         maxrun = new javax.swing.JLabel();
-        thirun2 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         maxwicket = new javax.swing.JLabel();
-        thighwicket2 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         tteams = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         tlist.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(tlist);
@@ -92,7 +90,6 @@ public class tourinfo extends javax.swing.JFrame {
         });
 
         tname.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        tname.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Year:");
@@ -116,51 +113,36 @@ public class tourinfo extends javax.swing.JFrame {
         jLabel8.setText("Highest Wicket:");
 
         tyear.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tyear.setText("jLabel9");
 
         thost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        thost.setText("jLabel10");
 
         tsponser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tsponser.setText("jLabel11");
 
         twin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        twin.setText("jLabel12");
 
         tman.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tman.setText("jLabel13");
 
         maxrungetter.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        maxrungetter.setText("jLabel14");
 
         maxwickettaker.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        maxwickettaker.setText("jLabel15");
 
         maxrun.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         maxrun.setText("(Individual)");
 
-        thirun2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        thirun2.setText("jLabel16");
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setText("(Total)");
-
         maxwicket.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         maxwicket.setText("(Individual)");
-
-        thighwicket2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        thighwicket2.setText("jLabel19");
-
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("(Total)");
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel21.setText("Participated in Tournament:");
 
         tteams.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tteams.setText("jLabel22");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cricproject/icons8-Home-64.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -192,31 +174,23 @@ public class tourinfo extends javax.swing.JFrame {
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel21))
-                                .addGap(69, 69, 69)
+                                .addGap(104, 104, 104)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(maxwickettaker)
-                                    .addComponent(maxrungetter)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(maxwickettaker)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(maxwicket))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(maxrungetter)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(maxrun, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(tman)
                                     .addComponent(twin)
                                     .addComponent(tsponser)
                                     .addComponent(thost)
                                     .addComponent(tyear)
-                                    .addComponent(tteams))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(maxrun)
-                                    .addComponent(maxwicket))
-                                .addGap(40, 40, 40)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(thirun2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel17))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(thighwicket2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel20)))))))
-                .addContainerGap(404, Short.MAX_VALUE))
+                                    .addComponent(tteams))))))
+                .addContainerGap(581, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,16 +225,12 @@ public class tourinfo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(maxrungetter)
-                            .addComponent(maxrun)
-                            .addComponent(thirun2)
-                            .addComponent(jLabel17))
+                            .addComponent(maxrun))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(maxwickettaker)
-                            .addComponent(maxwicket)
-                            .addComponent(thighwicket2)
-                            .addComponent(jLabel20))
+                            .addComponent(maxwicket))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
@@ -286,92 +256,93 @@ public class tourinfo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-        String tName = tlist.getSelectedValue();
-        String tid = null;
-        String year = null;
-        String host = null;         
-        String winner = null;
-        String wteam = null;
-        String mot = null;
-        String motname = null;
-        String sponsor = null;
-        String highestrun1  = null;
-        String highestrun2  = null;
-        String wickettaker1  = null;
-        String wickettaker2  = null;
-        String teams = " ";
-        String col_name = "tour_name";
-        
-        
-        tableName = "tournament";
-        
-        ResultSet result = ob1.showAllDataQuery(tableName, col_name, tName, 1);
-        
-        while(result.next()){
-            year = result.getString(3);
-            host = result.getString(4);
-            winner = result.getString(6);
-            mot = result.getString(7);
-            sponsor = result.getString(5);
-            tid = result.getString(1);
-        }
-        
-        
-        tname.setText(tName);
-        tyear.setText(year);
-        thost.setText(host);
-        tsponser.setText(sponsor);
-        thost.setText(host);
-        
-        
-        ResultSet result1 = ob1.showList("select t_name from team where t_id = '"+winner+"';");
-       while(result1.next()){
-            wteam = result1.getString(1);
-        }
-        
-        twin.setText(wteam);
-        
-        ResultSet result2 = ob1.showList("select p_name from player where p_id = '"+mot+"';");
-       while(result2.next()){
-            motname = result2.getString(1);
-        }
-        
-        tman.setText(motname);
-        
-        
-        ResultSet result3 = ob1.showList("select t_name from team where t_id in (select t_id from tournament_teams where tour_id = '"+tid+"');");
-            
-        while(result3.next()){
-            teams = teams + result3.getString(1) + "  ";
-        }
-           
-        tteams.setText(teams);
-         
-        ResultSet result4 = ob1.showList("SELECT p.p_name, sum(b.runs) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id INNER JOIN matches AS m ON m.m_id = b.m_id INNER JOIN tournament AS t ON t.tour_id = m.tour_id WHERE t.tour_id = '1' group by p.p_name order by sum(b.runs) DESC LIMIT 1");
-        
-        while(result4.next()){
-            highestrun2 = result4.getString(2);
-            highestrun1 = result4.getString(1);
-        }
-                   
-        maxrun.setText(highestrun2);
-        maxrungetter.setText(highestrun1);
-        
-        ResultSet result5 = ob1.showList("SELECT p.p_name, sum(b.wickets) FROM bowling_card AS b INNER JOIN player AS p ON p.p_id = b.p_id INNER JOIN matches AS m ON m.m_id = b.m_id INNER JOIN tournament AS t ON t.tour_id = m.tour_id WHERE t.tour_id = '1' group by p.p_name order by sum(b.wickets) DESC LIMIT 1");
+            String tName = tlist.getSelectedValue();
+            String tid = null;
+            String year = null;
+            String host = null;
+            String winner = null;
+            String wteam = null;
+            String mot = null;
+            String motname = null;
+            String sponsor = null;
+            String highestrun1  = null;
+            String highestrun2  = null;
+            String wickettaker1  = null;
+            String wickettaker2  = null;
+            String teams = " ";
+            String col_name = "tour_name";
 
-        while(result5.next()){
-            wickettaker2 = result5.getString(2);
-            wickettaker1 = result5.getString(1);
-        }
-                   
-        maxwicket.setText(wickettaker2);
-        maxwickettaker.setText(wickettaker1);
-        
+            tableName = "tournament";
+
+            ResultSet result = ob1.showAllDataQuery(tableName, col_name, tName, 1);
+
+            while(result.next()){
+                year = result.getString(3);
+                host = result.getString(4);
+                winner = result.getString(6);
+                mot = result.getString(7);
+                sponsor = result.getString(5);
+                tid = result.getString(1);
+            }
+
+            tname.setText(tName);
+            tyear.setText(year);
+            thost.setText(host);
+            tsponser.setText(sponsor);
+            thost.setText(host);
+
+            ResultSet result1 = ob1.showList("select t_name from team where t_id = '"+winner+"';");
+            while(result1.next()){
+                wteam = result1.getString(1);
+            }
+
+            twin.setText(wteam);
+
+            ResultSet result2 = ob1.showList("select p_name from player where p_id = '"+mot+"';");
+            while(result2.next()){
+                motname = result2.getString(1);
+            }
+
+            tman.setText(motname);
+
+            ResultSet result3 = ob1.showList("select t_name from team where t_id in (select t_id from tournament_teams where tour_id = '"+tid+"');");
+
+            while(result3.next()){
+                teams = teams + result3.getString(1) + "  ";
+            }
+
+            tteams.setText(teams);
+
+            ResultSet result4 = ob1.showList("SELECT p.p_name, sum(b.runs) FROM batting_card AS b INNER JOIN player AS p ON p.p_id = b.p_id INNER JOIN matches AS m ON m.m_id = b.m_id INNER JOIN tournament AS t ON t.tour_id = m.tour_id WHERE t.tour_id = '1' group by p.p_name order by sum(b.runs) DESC LIMIT 1");
+
+            while(result4.next()){
+                highestrun2 = result4.getString(2);
+                highestrun1 = result4.getString(1);
+            }
+
+            maxrun.setText("(" + highestrun2 + ")");
+            maxrungetter.setText(highestrun1);
+
+            ResultSet result5 = ob1.showList("SELECT p.p_name, sum(b.wickets) FROM bowling_card AS b INNER JOIN player AS p ON p.p_id = b.p_id INNER JOIN matches AS m ON m.m_id = b.m_id INNER JOIN tournament AS t ON t.tour_id = m.tour_id WHERE t.tour_id = '1' group by p.p_name order by sum(b.wickets) DESC LIMIT 1");
+
+            while(result5.next()){
+                wickettaker2 = result5.getString(2);
+                wickettaker1 = result5.getString(1);
+            }
+
+            maxwicket.setText("(" + wickettaker2 + ")");
+            maxwickettaker.setText(wickettaker1);
+
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        new Homepage().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,9 +382,7 @@ public class tourinfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -427,8 +396,6 @@ public class tourinfo extends javax.swing.JFrame {
     private javax.swing.JLabel maxrungetter;
     private javax.swing.JLabel maxwicket;
     private javax.swing.JLabel maxwickettaker;
-    private javax.swing.JLabel thighwicket2;
-    private javax.swing.JLabel thirun2;
     private javax.swing.JLabel thost;
     private javax.swing.JList<String> tlist;
     private javax.swing.JLabel tman;

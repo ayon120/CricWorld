@@ -74,6 +74,8 @@ public class venueinfo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
         vlist.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(vlist);
 
@@ -110,19 +112,14 @@ public class venueinfo extends javax.swing.JFrame {
         jLabel5.setText("Matchplayed:");
 
         vcountry.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        vcountry.setText("jLabel7");
 
         vcity.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        vcity.setText("jLabel8");
 
         vdate.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        vdate.setText("jLabel9");
 
         vcapacity.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        vcapacity.setText("jLabel10");
 
         vmatches.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        vmatches.setText("jLabel11");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

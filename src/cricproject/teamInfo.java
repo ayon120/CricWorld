@@ -70,18 +70,12 @@ public class teamInfo extends javax.swing.JFrame {
         selectPlayerBttn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         tname = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        fs = new javax.swing.JLabel();
         tmatchplayed = new javax.swing.JLabel();
         tmatchwon = new javax.swing.JLabel();
         twinrate = new javax.swing.JLabel();
-        trank = new javax.swing.JLabel();
-        thomewin = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         todi = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -97,6 +91,8 @@ public class teamInfo extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         selectTeamBttn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selectTeamBttn.setText("Select");
@@ -134,9 +130,6 @@ public class teamInfo extends javax.swing.JFrame {
         tname.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tname.setText("Show Name");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Full Squad:");
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Match-Played:");
 
@@ -146,65 +139,41 @@ public class teamInfo extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Winning-Rate:");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Team-Rank:");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Home-Win:");
-
-        fs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        fs.setText("jLabel8");
-
         tmatchplayed.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tmatchplayed.setText("jLabel9");
 
         tmatchwon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tmatchwon.setText("jLabel10");
 
         twinrate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        twinrate.setText("jLabel11");
-
-        trank.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        trank.setText("jLabel12");
-
-        thomewin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        thomewin.setText("jLabel13");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("ODI:");
 
         todi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        todi.setText("jLabel15");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Test:");
 
         ttest.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ttest.setText("jLabel17");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("T20:");
 
         tt20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tt20.setText("jLabel19");
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setText("ODI");
 
         todiwon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        todiwon.setText("jLabel21");
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel22.setText("Test:");
 
         ttestwon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ttestwon.setText("jLabel23");
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel24.setText("T20:");
 
         tt20won.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tt20won.setText("jLabel25");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cricproject/icons8-Home-64.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -223,28 +192,14 @@ public class teamInfo extends javax.swing.JFrame {
                         .addGap(480, 480, 480)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tmatchplayed))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(101, 101, 101)
-                                        .addComponent(fs)))
+                                .addComponent(jLabel3)
+                                .addGap(81, 81, 81)
+                                .addComponent(tmatchplayed)
                                 .addGap(33, 33, 33)
                                 .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(todi))
+                                .addGap(18, 18, 18)
+                                .addComponent(todi, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(thomewin))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(trank))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -265,18 +220,18 @@ public class teamInfo extends javax.swing.JFrame {
                                 .addGap(59, 59, 59)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(417, 417, 417)
-                                        .addComponent(jLabel20)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(todiwon)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(36, 36, 36)
                                         .addComponent(teamComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tname))))
+                                        .addComponent(tname))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(374, 374, 374)
+                                        .addComponent(jLabel20)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                                        .addComponent(todiwon, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(11, 11, 11))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(123, 123, 123)
                                 .addComponent(selectPlayerBttn)))
@@ -320,16 +275,12 @@ public class teamInfo extends javax.swing.JFrame {
                             .addComponent(selectTeamBttn)
                             .addComponent(cancelBttn)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(fs))
-                        .addGap(29, 29, 29)
+                        .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(tmatchplayed)
                             .addComponent(jLabel14)
-                            .addComponent(todi)
+                            .addComponent(todi, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16)
                             .addComponent(ttest)
                             .addComponent(jLabel18)
@@ -344,7 +295,7 @@ public class teamInfo extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(tmatchwon)
                             .addComponent(jLabel20)
-                            .addComponent(todiwon)
+                            .addComponent(todiwon, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22)
                             .addComponent(ttestwon)
                             .addComponent(jLabel24)
@@ -353,14 +304,6 @@ public class teamInfo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(twinrate))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(trank))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(thomewin))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(selectPlayerBttn)
                 .addGap(53, 53, 53))
@@ -409,6 +352,18 @@ public class teamInfo extends javax.swing.JFrame {
                 }
             }
             
+            ResultSet result3 = ob1.teamODIPlayed(selectedteamName);
+            
+            //int m = 0, w = 0;
+            while(result3.next())
+            {   
+                if(!result3.wasNull())
+                {
+                    todi.setText(result3.getString(2));
+                    //m = ((Number) result1.getObject(2)).intValue();
+                }
+            }
+            
             ResultSet result2 = ob1.teamWinCount(selectedteamName);
             
             while(result2.next())
@@ -426,7 +381,19 @@ public class teamInfo extends javax.swing.JFrame {
                 }
             }
             
+            ResultSet result4 = ob1.teamWinCount(selectedteamName);
             
+            while(result4.next())
+            {
+                if(!result4.wasNull())
+                {
+                    todiwon.setText(result4.getString(1));
+                    //w = ((Number) result2.getObject(1)).intValue();
+                    
+                }
+            }
+            
+            tname.setText(teamComboBox.getSelectedItem().toString());
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -470,8 +437,10 @@ public class teamInfo extends javax.swing.JFrame {
         ResultSet result13 = ob1.playerHighestScoreAgainst(playerName);
         ResultSet result14 = ob1.playerMOMs(playerName);
         ResultSet result15 = ob1.playermatchplayed(playerName);
+        ResultSet result16 = ob1.playerODIWicketsTaken(playerName);
+        ResultSet result17 = ob1.playerODIRuns(playerName);
   
-        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName, result1, result2, result3, result4, result5, result6, result7,result8,result9,result10,result11,result12,result13,result14,result15);
+        playerInfo ob2 = new playerInfo(playerName, playerCatg, playerDOB, selectedteamName, result1, result2, result3, result4, result5, result6, result7,result8,result9,result10,result11,result12,result13,result14,result15,result16,result17);
         this.dispose();
         ob2.setVisible(true);
         
@@ -523,34 +492,28 @@ public class teamInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelBttn;
-    private javax.swing.JLabel fs;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> playerList;
     private javax.swing.JButton selectPlayerBttn;
     private javax.swing.JButton selectTeamBttn;
     private javax.swing.JComboBox<String> teamComboBox;
-    private javax.swing.JLabel thomewin;
     private javax.swing.JLabel tmatchplayed;
     private javax.swing.JLabel tmatchwon;
     private javax.swing.JLabel tname;
     private javax.swing.JLabel todi;
     private javax.swing.JLabel todiwon;
-    private javax.swing.JLabel trank;
     private javax.swing.JLabel tt20;
     private javax.swing.JLabel tt20won;
     private javax.swing.JLabel ttest;
